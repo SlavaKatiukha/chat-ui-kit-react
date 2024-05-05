@@ -290,7 +290,7 @@ class MessageListInner extends React.Component {
           className={`${cName}__scroll-wrapper`}
           ref={this.scrollRef}
           containerRef={(ref) => (this.containerRef.current = ref)}
-          options={{ suppressScrollX: true }}
+          options={{ suppressScrollX: true, wheelPropagation: false }} /* // ## wheelPropagation: false */
           {...{ [`data-${prefix}-message-list`]: "" }}
           style={{
             overscrollBehaviorY: "none",

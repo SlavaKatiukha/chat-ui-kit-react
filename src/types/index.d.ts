@@ -18,6 +18,7 @@ export type ChatComponentPropsChildren<P,T extends ElementTypeOrHTMLElement> = P
 export type ChatComponentPropsChildrenRef<P,T extends ElementTypeOrHTMLElement> = PropsWithChildren<ChatComponentPropsRef<P,T>>;
 
 export {Size, UserStatus, MessageType} from "./unions";
+export { prefix } from "../components/settings"; // ##
 export * from "../components/Avatar/Avatar";
 export * from "../components/AvatarGroup/AvatarGroup";
 export * from "../components/Buttons/Buttons";
