@@ -1,4 +1,4 @@
-# @chatscope/chat-ui-kit-react changelog
+# @ravatar/chat-ui-kit-react (a fork of @chatscope/chat-ui-kit-react) changelog
 
 ## [2.0.3](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.2...v2.0.3) (2024-03-03)
 
