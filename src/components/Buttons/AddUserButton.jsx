@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons/faUserPlus";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faUserPlus } from "@fortawesome/free-solid-svg-icons/faUserPlus";
 
 export const AddUserButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--adduser`;
@@ -13,7 +13,7 @@ export const AddUserButton = ({ className = "", children, ...rest }) => {
     <Button
       {...rest}
       className={classNames(cName, className)}
-      icon={<FontAwesomeIcon icon={faUserPlus} />}
+      // icon={<FontAwesomeIcon icon={faUserPlus} />}
     >
       {children}
     </Button>
