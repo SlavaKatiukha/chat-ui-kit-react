@@ -2,9 +2,9 @@ import React, { useState, useCallback, useMemo } from "react";
 import PropTypes from "prop-types";
 import { prefix } from "../settings";
 import classNames from "classnames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
+// import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 
 export const ExpansionPanel = ({
   children = undefined,
@@ -46,7 +46,7 @@ export const ExpansionPanel = ({
       <div className={`${cName}__header`} onClick={handleOpen}>
         <div className={`${cName}__title`}>{title}</div>
         <div className={`${cName}__icon`}>
-          <FontAwesomeIcon icon={icon} />
+          {/* <FontAwesomeIcon icon={icon} /> */}
         </div>
       </div>
       <div className={`${cName}__content`}>{children}</div>
