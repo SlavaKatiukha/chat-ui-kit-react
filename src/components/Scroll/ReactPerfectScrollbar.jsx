@@ -32,9 +32,18 @@ export default class ScrollBar extends Component {
       );
     }
 
+    // ##
+    const options = this.props.options || this.props.option;
+
+    
+    if (options) {
+      options.wheelPropagation = options.wheelPropagation || false;
+    }
+    // !##
+    
     this._ps = new PerfectScrollbar(
       this._container,
-      this.props.options || this.props.option
+      options // ##
     );
     // hook up events
     this._updateEventHook();
