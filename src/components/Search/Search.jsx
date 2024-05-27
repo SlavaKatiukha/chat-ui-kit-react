@@ -8,9 +8,9 @@ import React, {
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+// import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const useControlledOrNot = (initialValue, value) => {
   if (typeof value === "undefined") {
@@ -82,7 +82,8 @@ function SearchInner(
         className
       )}
     >
-      <FontAwesomeIcon icon={faSearch} className={`${cName}__search-icon`} />
+      {/* <FontAwesomeIcon icon={faSearch} className={`${cName}__search-icon`} /> */}
+      <div className={`${cName}__search-icon`}></div>
       <input
         ref={inputRef}
         type="text"
@@ -92,13 +93,19 @@ function SearchInner(
         disabled={disabled}
         value={searchValue}
       />
-      <FontAwesomeIcon
+      <div
+        className={classNames(`${cName}__clear-icon`, {
+          [`${cName}__clear-icon--active`]: clearActive,
+        })}
+        onClick={handleClearClick}>
+      </div>
+      {/* <FontAwesomeIcon
         icon={faTimes}
         className={classNames(`${cName}__clear-icon`, {
           [`${cName}__clear-icon--active`]: clearActive,
         })}
         onClick={handleClearClick}
-      />
+      /> */}
     </div>
   );
 }

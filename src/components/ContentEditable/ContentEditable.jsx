@@ -56,8 +56,31 @@ export class ContentEditable extends Component {
     } = this;
 
     const target = evt.target;
+    
+    // ##
+    if (target.innerHTML === "<br>") {
+      target.innerHTML = "";
+    }
+    // !##
+
     onChange?.(target.innerHTML, target.textContent, target.innerText);
   };
+
+  // ##
+  handlePaste = (evt) => {
+    const {
+      props: { onChange },
+    } = this;
+
+    evt.preventDefault();
+
+    const target = this.msgRef.current;
+    const text = evt.clipboardData.getData("text/plain");
+    document.execCommand("insertText", false, text);
+
+    onChange?.(target?.innerHTML, target?.textContent, target?.innerText, true);
+  };
+  // !##
 
   // Public API
   focus() {
@@ -112,6 +135,7 @@ export class ContentEditable extends Component {
         msgRef,
         handleInput,
         handleKeyPress,
+        handlePaste,
         innerHTML,
         props: { placeholder, disabled, className },
       } = this,
@@ -126,7 +150,9 @@ export class ContentEditable extends Component {
         data-placeholder={ph}
         onInput={handleInput}
         onKeyPress={handleKeyPress}
+        onPaste={handlePaste} // ##
         dangerouslySetInnerHTML={innerHTML()}
+        role="textbox" // ##
       ></div>
     );
   }
