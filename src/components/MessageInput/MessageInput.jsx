@@ -159,7 +159,7 @@ function MessageInputInner(
     }
   };
 
-  const handleChange = (innerHTML, textContent, innerText) => {
+  const handleChange = (innerHTML, textContent, innerText/*, isPaste */) => {
     setStateValue(innerHTML);
     if (typeof sendDisabled === "undefined") {
       setStateSendDisabled(textContent.length === 0);
@@ -172,6 +172,9 @@ function MessageInputInner(
     const content = getContent();
 
     onChange(innerHTML, textContent, innerText, content[2]);
+
+    // if (isPaste && scrollRef.current._container) {
+    // }
   };
 
   const cName = `${prefix}-message-input`,

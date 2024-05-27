@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
+// import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
 
 export const EllipsisButton = ({
   className = "",
@@ -21,7 +21,7 @@ export const EllipsisButton = ({
     <Button
       {...rest}
       className={classNames(cName, className)}
-      icon={<FontAwesomeIcon icon={icon} />}
+      // icon={<FontAwesomeIcon icon={icon} />}
     >
       {children}
     </Button>

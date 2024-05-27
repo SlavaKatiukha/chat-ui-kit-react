@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
 
 export const InfoButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--info`;
@@ -13,7 +13,7 @@ export const InfoButton = ({ className = "", children, ...rest }) => {
     <Button
       {...rest}
       className={classNames(cName, className)}
-      icon={<FontAwesomeIcon icon={faInfoCircle} />}
+      // icon={<FontAwesomeIcon icon={faInfoCircle} />}
     >
       {children}
     </Button>

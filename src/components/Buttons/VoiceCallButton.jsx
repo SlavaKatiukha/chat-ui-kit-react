@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons/faPhoneAlt";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons/faPhoneAlt";
 
 export const VoiceCallButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--voicecall`;
@@ -13,7 +13,7 @@ export const VoiceCallButton = ({ className = "", children, ...rest }) => {
     <Button
       {...rest}
       className={classNames(cName, className)}
-      icon={<FontAwesomeIcon icon={faPhoneAlt} />}
+      // icon={<FontAwesomeIcon icon={faPhoneAlt} />}
     >
       {children}
     </Button>
