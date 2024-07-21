@@ -151,6 +151,16 @@ export class ContentEditable extends Component {
         onInput={handleInput}
         onKeyPress={handleKeyPress}
         onPaste={handlePaste} // ##
+        onBlur={(e) => {
+          // todo: find a better solution
+          if (e.relatedTarget && e.relatedTarget.classList.contains("skip-blur")) {
+            e.preventDefault();
+
+            // if (e.target?.parentNode?.parentNode?.parentNode?.contains("keyboard-open")) {
+            msgRef.current?.focus();
+            // }
+          }
+        }}
         dangerouslySetInnerHTML={innerHTML()}
         role="textbox" // ##
       ></div>
