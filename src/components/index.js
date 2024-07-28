@@ -4,6 +4,7 @@ export { default as AvatarGroup } from "./AvatarGroup";
 export { default as ChatContainer } from "./ChatContainer";
 export { default as Conversation } from "./Conversation";
 export { default as ConversationHeader } from "./ConversationHeader";
+export { default as ConversationStream } from "./ConversationStream";
 export { default as ConversationList } from "./ConversationList";
 export { default as ExpansionPanel } from "./ExpansionPanel";
 export { default as InputToolbox } from "./InputToolbox";

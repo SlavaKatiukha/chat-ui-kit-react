@@ -1,6 +1,7 @@
 import React from "react";
 import { allowedChildren, getChildren } from "../utils";
 import ConversationHeader from "../ConversationHeader";
+import ConversationStream from "../ConversationStream";
 import MessageList from "../MessageList";
 import MessageInput from "../MessageInput";
 import InputToolbox from "../InputToolbox";
@@ -13,11 +14,13 @@ export const ChatContainer = ({ children = undefined, className, ...rest }) => {
 
   const [
     header,
+    conversationStream,
     messageList,
     messageInput,
     inputToolbox,
   ] = getChildren(children, [
     ConversationHeader,
+    ConversationStream,
     MessageList,
     MessageInput,
     InputToolbox,
@@ -26,6 +29,7 @@ export const ChatContainer = ({ children = undefined, className, ...rest }) => {
   return (
     <div {...rest} className={classNames(cName, className)}>
       {header}
+      {conversationStream}
       {messageList}
       {messageInput}
       {inputToolbox}
@@ -45,6 +49,7 @@ ChatContainer.propTypes = {
    */
   children: allowedChildren([
     ConversationHeader,
+    ConversationStream,
     MessageList,
     MessageInput,
     InputToolbox,
