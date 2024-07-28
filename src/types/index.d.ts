@@ -25,6 +25,7 @@ export * from "../components/Buttons/Buttons";
 export * from "../components/ChatContainer/ChatContainer";
 export * from "../components/Conversation/Conversation";
 export * from "../components/ConversationHeader/ConversationHeader";
+export * from "../components/ConversationStream/ConversationStream";
 export * from "../components/ConversationList/ConversationList";
 export * from "../components/ExpansionPanel/ExpansionPanel";
 export * from "../components/InputToolbox/InputToolbox";
