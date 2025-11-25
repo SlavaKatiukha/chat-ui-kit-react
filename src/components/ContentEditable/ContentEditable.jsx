@@ -119,6 +119,7 @@ export class ContentEditable extends Component {
       }
     }
   };
+  // !##
 
   // Public API
   focus() {
