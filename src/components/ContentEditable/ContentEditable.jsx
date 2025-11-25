@@ -31,6 +31,7 @@ export class ContentEditable extends Component {
   constructor(props) {
     super(props);
     this.msgRef = React.createRef();
+    this.wasFocused = false;
   }
 
   innerHTML = () => {
@@ -82,6 +83,44 @@ export class ContentEditable extends Component {
   };
   // !##
 
+  handleFocus = () => {
+    this.wasFocused = true;
+  };
+
+  handleBlur = (e) => {
+    // Skip blur for specific elements
+    if (e.relatedTarget && e.relatedTarget.classList.contains("skip-blur")) {
+      e.preventDefault();
+
+      if (this.wasFocused) {
+        this.msgRef.current?.focus();
+      }
+      return; 
+    }
+    
+    this.wasFocused = false;
+  };
+
+  handleViewportResize = (event) => {
+    const VIEWPORT_VS_CLIENT_HEIGHT_RATIO = 0.75;
+
+    if (
+      (event.target.height * event.target.scale) / window.screen.height <
+      VIEWPORT_VS_CLIENT_HEIGHT_RATIO
+    ) {
+      // keyboard is shown
+      // this.wasFocused = true;
+      // this.msgRef.current?.focus();
+    } else {
+      // keyboard is hidden
+      if (this.wasFocused) {
+        this.wasFocused = false;
+        this.msgRef.current?.blur();
+      }
+    }
+  };
+  // !##
+
   // Public API
   focus() {
     if (typeof this.msgRef.current !== "undefined") {
@@ -93,6 +132,12 @@ export class ContentEditable extends Component {
     if (this.props.autoFocus === true) {
       this.msgRef.current.focus();
     }
+
+    window.visualViewport?.addEventListener('resize', this.handleViewportResize);
+  }
+
+  componentWillUnmount() {
+    window.visualViewport?.removeEventListener('resize', this.handleViewportResize);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -127,7 +172,9 @@ export class ContentEditable extends Component {
       msgRef.current.innerHTML = typeof value === "string" ? value : "";
     }
 
-    replaceCaret(msgRef.current, activateAfterChange);
+    if (this.wasFocused || activateAfterChange) {
+      replaceCaret(msgRef.current, activateAfterChange);
+    }
   }
 
   render() {
@@ -136,6 +183,8 @@ export class ContentEditable extends Component {
         handleInput,
         handleKeyPress,
         handlePaste,
+        handleFocus,
+        handleBlur,
         innerHTML,
         props: { placeholder, disabled, className },
       } = this,
@@ -151,16 +200,8 @@ export class ContentEditable extends Component {
         onInput={handleInput}
         onKeyPress={handleKeyPress}
         onPaste={handlePaste} // ##
-        onBlur={(e) => {
-          // todo: find a better solution
-          if (e.relatedTarget && e.relatedTarget.classList.contains("skip-blur")) {
-            e.preventDefault();
-
-            // if (e.target?.parentNode?.parentNode?.parentNode?.contains("keyboard-open")) {
-            msgRef.current?.focus();
-            // }
-          }
-        }}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         dangerouslySetInnerHTML={innerHTML()}
         role="textbox" // ##
       ></div>
